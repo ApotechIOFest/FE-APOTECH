@@ -27,8 +27,8 @@ export const ApotechLogo: React.FC<IconProps> = ({
           y2="146.12"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#2B88D9" />
-          <stop offset="1" stop-color="#26E0F5" />
+          <stop stopColor="#2B88D9" />
+          <stop offset="1" stopColor="#26E0F5" />
         </linearGradient>
       </defs>
     </svg>

@@ -1,4 +1,9 @@
-import { HomeIcon, ChatBubbleLeftRightIcon, BeakerIcon, NewspaperIcon} from '@heroicons/react/24/outline'
+import {
+  HomeIcon,
+  ChatBubbleLeftRightIcon,
+  BeakerIcon,
+  NewspaperIcon,
+} from '@heroicons/react/24/outline'
 
 export const routes = [
   {

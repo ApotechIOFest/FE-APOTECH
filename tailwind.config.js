@@ -16,7 +16,7 @@ module.exports = {
       fontFamily: {
         inter: 'InterReguler',
         interBold: 'InterBold',
-        interSemiBold : 'InterSemiBold'
+        interSemiBold: 'InterSemiBold',
       },
       colors: {
         crimson: 'ED7390',
@@ -24,9 +24,9 @@ module.exports = {
           light: '#F1F8FF',
           normal: '#26E0F5',
           dark: '#5CAAE2',
-          darkest : '#2B8BDA',
+          darkest: '#2B8BDA',
         },
-        broken : '#F6F6F6',
+        broken: '#F6F6F6',
         grey: '#767676',
       },
       fontSize: {
@@ -50,7 +50,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require("flowbite/plugin")
-  ],
+  plugins: [require('flowbite/plugin')],
 }
