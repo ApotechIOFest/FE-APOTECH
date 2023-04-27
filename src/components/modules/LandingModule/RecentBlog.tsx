@@ -1,3 +1,4 @@
+import { ALink } from '@elements'
 import Image from 'next/image'
 
 export default function RecentBlog() {
@@ -7,12 +8,9 @@ export default function RecentBlog() {
         <h1 className="lg:text-display-medium md:text-display-small text-display-small font-bold leading-none text-blue-darkest">
           Our Recent Articles
         </h1>
-        <a
-          href="#"
-          className="block pb-1 mt-2 text-base font-black text-blue-600 uppercase border-b border-transparent hover:border-blue-600"
-        >
-          Check our latest
-        </a>
+        <ALink uppercase={true} href={'/auth/register'}>
+          CHeck our latest
+        </ALink>
       </div>
       <div className="max-w-screen-xl mx-auto my-5 sm:my-10 p-5 sm:p-0">
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-5">
@@ -44,9 +42,9 @@ export default function RecentBlog() {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M13 5l7 7-7 7M5 5l7 7-7 7"
                   ></path>
                 </svg>
@@ -66,9 +64,7 @@ export default function RecentBlog() {
                 <div className="flex flex-1">
                   <div className="">
                     <p className="text-sm font-semibold">Booby Purly</p>
-                    <p className="text-sm text-gray-500">
-                      Published on "date"
-                    </p>
+                    <p className="text-sm text-gray-500">Published on date</p>
                   </div>
                 </div>
               </div>

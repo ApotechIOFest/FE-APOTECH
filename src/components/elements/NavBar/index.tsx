@@ -1,9 +1,10 @@
 import React from 'react'
-import { Navbar } from 'flowbite-react'
+import { Button, Navbar } from 'flowbite-react'
 import { ApotechLogo } from '@icons'
 import { routes } from './constant'
+import { useRouter } from 'next/router'
 export const NavBar: React.FC = () => {
-  // TODO: Write element's logic
+  const router = useRouter()
 
   return (
     <>
@@ -18,9 +19,12 @@ export const NavBar: React.FC = () => {
           </h1>
         </Navbar.Brand>
         <div className="flex md:order-2 space-x-3">
-          <button className="flex items-center shadow-sm space-x-2 bg-indigo-500 text-gray-100 p-2 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out justify-center focus:shadow-outline focus:outline-none px-4">
+          <Button
+            className="bg-indigo-500"
+            onClick={(e) => router.push('/auth/login')}
+          >
             Login
-          </button>
+          </Button>
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>

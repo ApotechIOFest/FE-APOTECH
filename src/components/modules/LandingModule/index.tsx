@@ -10,7 +10,7 @@ export const LandingModule: React.FC = () => {
       <div className="relative w-full lg:pt-32 md:pt-28 pt-24 lg:px-32 md:px-16 px-3">
         <Hero />
         <About />
-        <RecentBlog/>
+        <RecentBlog />
         <Faq />
       </div>
     </>
