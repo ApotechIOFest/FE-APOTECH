@@ -1,10 +1,7 @@
 export const LogoutModule: React.FC = () => {
-
-    return(
-        <>
-        <p>
-            logout
-        </p>
-        </>
-    );
+  return (
+    <>
+      <p>logout</p>
+    </>
+  )
 }
