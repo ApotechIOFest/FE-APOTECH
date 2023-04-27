@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Button } from 'flowbite-react'
+import { Navbar } from 'flowbite-react'
 import { ApotechLogo } from '@icons'
 import { routes } from './constant'
 export const NavBar: React.FC = () => {
@@ -13,13 +13,15 @@ export const NavBar: React.FC = () => {
       >
         <Navbar.Brand>
           <ApotechLogo size={'w-10'} />
-          <span className="self-center whitespace-nowrap ml-3 text-blue-darkest lg:text-headline-medium md:text-headline-medium text-title-large font-interSemiBold">
+          <h1 className="self-center whitespace-nowrap ml-3 text-blue-darkest lg:text-headline-medium md:text-headline-medium text-title-large">
             apotech
-          </span>
+          </h1>
         </Navbar.Brand>
         <div className="flex md:order-2 space-x-3">
-          <button className="flex items-center shadow-sm space-x-2 bg-indigo-500 text-gray-100 p-2 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out justify-center focus:shadow-outline focus:outline-none px-4">Login</button>
-            <Navbar.Toggle />
+          <button className="flex items-center shadow-sm space-x-2 bg-indigo-500 text-gray-100 p-2 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out justify-center focus:shadow-outline focus:outline-none px-4">
+            Login
+          </button>
+          <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
           {routes.map((route, index) => (

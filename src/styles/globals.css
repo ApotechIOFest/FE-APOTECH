@@ -3,14 +3,26 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Inter';
-  src: url('/assets/fonts/Inter-Regular.ttf');
+  font-family: 'ProductSans';
+  src: url('/assets/fonts/ProductSans-Regular.ttf');
 }
 @font-face {
-  font-family: 'InterSemiBold';
-  src: url('/assets/fonts/Inter-SemiBold.ttf');
+  font-family: 'ProductSansBold';
+  src: url('/assets/fonts/ProductSans-Bold.ttf');
 }
 @font-face {
-  font-family: 'InterBold';
-  src: url('/assets/fonts/Inter-Bold.ttf');
+  font-family: 'ProductSansItalic';
+  src: url('/assets/fonts/ProductSans-Italic.ttf');
+}
+@font-face {
+  font-family: 'ProductSansBoldItalic';
+  src: url('/assets/fonts/ProductSans-BoldItalic.ttf');
+}
+
+*{
+  font-family: 'ProductSans';
+}
+
+h1{
+  font-family: 'ProductSansBold';
 }

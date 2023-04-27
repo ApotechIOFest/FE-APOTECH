@@ -14,9 +14,10 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontFamily: {
-        inter: 'InterReguler',
-        interBold: 'InterBold',
-        interSemiBold: 'InterSemiBold',
+        productSans : 'ProductSans',
+        productSansBold : 'ProductSansBold',
+        productSansBoldItalic : 'ProductSansBoldItalic',
+        productSansItalic : 'ProductSansItalic',
       },
       colors: {
         crimson: 'ED7390',
