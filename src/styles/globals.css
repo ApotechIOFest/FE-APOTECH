@@ -19,10 +19,10 @@
   src: url('/assets/fonts/ProductSans-BoldItalic.ttf');
 }
 
-*{
+* {
   font-family: 'ProductSans';
 }
 
-h1{
+h1 {
   font-family: 'ProductSansBold';
 }
