@@ -6,7 +6,7 @@ import { IRegisterData } from './interface'
 import { EMPTY_REGISTER_DATA } from './constant'
 import axios from 'axios'
 import { useRouter } from 'next/router'
-import toast from 'react-hot-toast'
+// import toast from 'react-hot-toast'
 
 export const RegisterModule: React.FC = () => {
   const [data, setData] = useState<IRegisterData>(EMPTY_REGISTER_DATA)
@@ -22,16 +22,16 @@ export const RegisterModule: React.FC = () => {
     axios
       .post('/register', data)
       .then((res) => {
-        // GABISA JALAN
-        toast.success('Successfully registered user!')
+        alert("success") // TEMP
+
         setInterval(() => {
           router.push('/auth/login')
         }, 2000)
       })
       .catch((err) => {
         console.log('ERR', err)
-        // GABISA JALAN
-        toast.error('Error registering user.')
+
+        alert("error") // TEMP
       })
       .finally(() => setIsLoading(false))
   }
@@ -40,6 +40,7 @@ export const RegisterModule: React.FC = () => {
     <>
       <div className=" bg-blue-light relative w-full lg:pt-32 md:pt-28 pt-24 lg:px-32 md:px-16 px-3">
         <h1 className="text-3xl text-center">Welcome to Apotech!</h1>
+        <br/>
         <DialogueCard>
           <h2>Name</h2>
           <TextInput
