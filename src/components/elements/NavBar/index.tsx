@@ -1,10 +1,14 @@
 import React from 'react'
-import { Button, Navbar } from 'flowbite-react'
+import { Avatar, Button, Dropdown, Navbar } from 'flowbite-react'
 import { ApotechLogo } from '@icons'
 import { routes } from './constant'
 import { useRouter } from 'next/router'
+import { useAuthContext } from 'src/components/contexts/AuthContext'
+import { IAuthContext } from 'src/components/contexts/AuthContext/interface'
+import Link from 'next/link'
 export const NavBar: React.FC = () => {
   const router = useRouter()
+  const { user }: IAuthContext = useAuthContext()
 
   return (
     <>
@@ -19,12 +23,40 @@ export const NavBar: React.FC = () => {
           </h1>
         </Navbar.Brand>
         <div className="flex md:order-2 space-x-3">
-          <Button
-            className="bg-indigo-500"
-            onClick={(e) => router.push('/auth/login')}
-          >
-            Login
-          </Button>
+          {user ? (
+            <>
+              <Avatar
+                img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                rounded={true}
+                bordered={false}
+              />
+              <Dropdown
+                className="text-sm font-bold"
+                label={<div>{user.name}</div>}
+                outline
+                color={'light'}
+              >
+                <Dropdown.Item>
+                  <Link href="/profile">Profile</Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link href="/cart">Cart</Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link href="/auth/logout" className=" text-red-500">
+                    Sign out
+                  </Link>
+                </Dropdown.Item>
+              </Dropdown>
+            </>
+          ) : (
+            <Button
+              className="bg-indigo-500"
+              onClick={(e) => router.push('/auth/login')}
+            >
+              Login
+            </Button>
+          )}
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>

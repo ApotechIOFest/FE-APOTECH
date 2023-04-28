@@ -6,14 +6,14 @@ import { useAuthContext } from 'src/components/contexts/AuthContext'
 
 export const LogoutModule: React.FC = () => {
   const router = useRouter()
-  const {setJwt, setUser} = useAuthContext()
+  const { setJwt, setUser } = useAuthContext()
 
   useEffect(() => {
     secureLocalStorage.removeItem('user')
     secureLocalStorage.removeItem('jwt')
     setUser(null)
     setJwt(null)
-    
+
     setTimeout(() => {
       router.replace('/')
     }, 3000)
