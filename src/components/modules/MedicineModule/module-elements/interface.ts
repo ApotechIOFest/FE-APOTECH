@@ -1,6 +1,6 @@
-import { Medicine } from "../interface"
+import { Medicine } from '../interface'
 
 export interface Props {
-    className?: string
-    medicine: Medicine
+  className?: string
+  medicine: Medicine
 }

@@ -15,24 +15,22 @@ export const MedicineCard: React.FC<Props> = ({ medicine, className }) => {
         `}
       >
         <Image
-            src={medicine.foto_obat}
-            alt="foto obat"
-            width={500}
-            height={500}
-            className='object-cover w-[250px] h-[200px] rounded-t-2xl'
+          src={medicine.foto_obat}
+          alt="foto obat"
+          width={500}
+          height={500}
+          className="object-cover w-[250px] h-[200px] rounded-t-2xl"
         />
-        <div className='flex flex-col gap-x-6 px-6 pt-6'>
-            <h1 className='text-title-large'>{medicine.nama_obat}</h1>
-            <p>Per {medicine.dosage_unit}</p>
-            <p className='mt-3 mb-6'>Rp. {medicine.price}</p>
+        <div className="flex flex-col gap-x-6 px-6 pt-6">
+          <h1 className="text-title-large">{medicine.nama_obat}</h1>
+          <p>Per {medicine.dosage_unit}</p>
+          <p className="mt-3 mb-6">Rp. {medicine.price}</p>
         </div>
-        <div className='flex justify-center gap-x-6 px-6 pb-6'>
-            <ALink uppercase={false} href={`/medicine/${medicine.id}`}>
-                View more
-            </ALink>
-            <Button className='bg-indigo-500'>
-                Add to Cart
-            </Button>
+        <div className="flex justify-center gap-x-6 px-6 pb-6">
+          <ALink uppercase={false} href={`/medicine/${medicine.id}`}>
+            View more
+          </ALink>
+          <Button className="bg-indigo-500">Add to Cart</Button>
         </div>
       </div>
     </>
