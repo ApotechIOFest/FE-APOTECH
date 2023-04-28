@@ -24,7 +24,7 @@ export const RegisterModule: React.FC = () => {
       .then((res) => {
         alert('success') // TEMP
 
-        setInterval(() => {
+        setTimeout(() => {
           router.push('/auth/login')
         }, 2000)
       })

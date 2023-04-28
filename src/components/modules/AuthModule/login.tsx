@@ -33,13 +33,13 @@ export const LoginModule: React.FC = () => {
       .post('/login', formData)
       .then((res) => {
         setJwt(res.data.data)
-        secureLocalStorage.setItem('user', res.data.data)
+        secureLocalStorage.setItem('user', JSON.stringify(res.data.data))
         setUser(res.data.token)
         secureLocalStorage.setItem('token', res.data.token)
 
         alert('success') // TEMP
 
-        setInterval(() => {
+        setTimeout(() => {
           router.push('/')
         }, 2000)
       })
