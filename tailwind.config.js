@@ -14,10 +14,10 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontFamily: {
-        productSans : 'ProductSans',
-        productSansBold : 'ProductSansBold',
-        productSansBoldItalic : 'ProductSansBoldItalic',
-        productSansItalic : 'ProductSansItalic',
+        productSans: 'ProductSans',
+        productSansBold: 'ProductSansBold',
+        productSansBoldItalic: 'ProductSansBoldItalic',
+        productSansItalic: 'ProductSansItalic',
       },
       colors: {
         crimson: 'ED7390',
