@@ -11,13 +11,16 @@ export const MedicineModule: React.FC = () => {
   const [medicines, setMedicines] = useState<Medicine[] | null>()
   const router = useRouter()
 
+  function dummyFunction() {
+    // TODO (replace dummyFunction called by MedicineCard with an actual add-to-cart handler)
+  }
+
   function fetchMedicines(): Promise<any> {
     return axios
       .get('/medicines/items/')
       .then((res) => res.data)
       .catch((err) => {
-        console.log(err)
-        throw new Error()
+        throw new Error(err)
       })
   }
 
@@ -29,7 +32,7 @@ export const MedicineModule: React.FC = () => {
 
   return (
     <>
-      <main className="relative w-full min-h-screen lg:py-32 md:py-28 py-24 lg:px-32 md:px-16 px-3 text-sm">
+      <main className="relative w-full min-h-screen lg:py-32 md:py-28 py-24 lg:px-32 md:px-16 px-3 text-sm bg-slate-50">
         <h1 className="py-12 text-display-small text-center">Katalog Obat</h1>
         <div className="flex py-6 w-full justify-around gap-x-2">
           <TextInput
@@ -52,7 +55,11 @@ export const MedicineModule: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-1 gap-y-8">
           {medicines ? (
             medicines?.map((medicine: Medicine, key: number) => (
-              <MedicineCard key={key} medicine={medicine} />
+              <MedicineCard
+                key={key}
+                medicine={medicine}
+                addToCartHandler={dummyFunction}
+              />
             ))
           ) : (
             <Spinner />

@@ -4,7 +4,11 @@ import Image from 'next/image'
 import { Button } from 'flowbite-react'
 import { ALink } from '@elements'
 
-export const MedicineCard: React.FC<Props> = ({ medicine, className }) => {
+export const MedicineCard: React.FC<Props> = ({
+  medicine,
+  className,
+  addToCartHandler,
+}) => {
   return (
     <>
       <div
@@ -30,7 +34,12 @@ export const MedicineCard: React.FC<Props> = ({ medicine, className }) => {
           <ALink uppercase={false} href={`/medicine/${medicine.id}`}>
             View more
           </ALink>
-          <Button className="bg-indigo-500">Add to Cart</Button>
+          <Button
+            className="bg-indigo-500"
+            onClick={(e) => addToCartHandler(medicine)}
+          >
+            Add to Cart
+          </Button>
         </div>
       </div>
     </>
