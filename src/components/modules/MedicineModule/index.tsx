@@ -32,7 +32,7 @@ export const MedicineModule: React.FC = () => {
 
   return (
     <>
-      <main className="relative w-full min-h-screen lg:py-32 md:py-28 py-24 lg:px-32 md:px-16 px-3 text-sm bg-slate-50">
+      <main className="relative w-full min-h-screen 2xl:px-[20vw] lg:py-32 md:py-28 py-24 lg:px-32 md:px-16 px-3 text-sm bg-slate-50">
         <h1 className="py-12 text-display-small text-center">Katalog Obat</h1>
         <div className="flex py-6 w-full justify-around gap-x-2">
           <TextInput

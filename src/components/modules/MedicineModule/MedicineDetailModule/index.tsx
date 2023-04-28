@@ -44,7 +44,7 @@ export const MedicineDetailModule: React.FC = () => {
 
   return (
     <>
-      <main className="relative w-full min-h-screen lg:py-32 md:py-28 py-24 lg:px-32 md:px-16 px-3 bg-slate-50">
+      <main className="relative w-full min-h-screen 2xl:px-[20vw] lg:py-32 md:py-28 py-24 lg:px-32 md:px-16 px-3 bg-slate-50">
         <Breadcrumb className="lg:mb-12 mb-8">
           <Breadcrumb.Item href="/medicine">Katalog Obat</Breadcrumb.Item>
           <Breadcrumb.Item>{medicine?.nama_obat || '...'}</Breadcrumb.Item>
