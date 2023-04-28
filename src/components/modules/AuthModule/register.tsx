@@ -38,7 +38,7 @@ export const RegisterModule: React.FC = () => {
 
   return (
     <>
-      <div className=" bg-blue-light relative w-full lg:pt-32 md:pt-28 pt-24 lg:px-32 md:px-16 px-3">
+      <div className=" bg-blue-light relative w-full py-10 lg:pt-32 md:pt-28 pt-24 lg:px-32 md:px-16 px-3">
         <h1 className="text-3xl text-center">Welcome to Apotech!</h1>
         <br />
         <DialogueCard>
