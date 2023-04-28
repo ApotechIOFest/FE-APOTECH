@@ -3,7 +3,6 @@ export interface ILoginData {
   password: string
 }
 
-
 export interface IRegisterData {
   email: string
   name: string

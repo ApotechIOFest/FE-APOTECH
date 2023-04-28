@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { DialogueCard } from './module-elements/DialogueCard'
 import { Button, Spinner, TextInput } from 'flowbite-react'
 import { ALink } from '@elements'
-import { ILoginData } from './interface';
+import { ILoginData } from './interface'
 import { EMPTY_LOGIN_DATA } from './constant'
 import { useRouter } from 'next/router'
 import axios from 'axios'
-import { useAuthContext } from 'src/components/contexts/AuthContext';
-import secureLocalStorage from 'react-secure-storage';
+import { useAuthContext } from 'src/components/contexts/AuthContext'
+import secureLocalStorage from 'react-secure-storage'
 // import toast from 'react-hot-toast'
 
 export const LoginModule: React.FC = () => {
@@ -24,12 +24,12 @@ export const LoginModule: React.FC = () => {
     setIsLoading(true)
 
     const formData = new FormData()
-    formData.set("email", data.email)
-    formData.set("password", data.password)
+    formData.set('email', data.email)
+    formData.set('password', data.password)
     console.log(data, formData.entries())
 
-    // const promise = 
-      axios
+    // const promise =
+    axios
       .post('/login', formData)
       .then((res) => {
         setJwt(res.data.data)
@@ -37,7 +37,7 @@ export const LoginModule: React.FC = () => {
         setUser(res.data.token)
         secureLocalStorage.setItem('token', res.data.token)
 
-        alert("success") // TEMP
+        alert('success') // TEMP
 
         setInterval(() => {
           router.push('/')
@@ -46,7 +46,7 @@ export const LoginModule: React.FC = () => {
       .catch((err) => {
         console.log('ERROR:', err)
 
-        alert("err") // TEMP
+        alert('err') // TEMP
       })
       .finally(() => setIsLoading(false))
 
@@ -61,7 +61,7 @@ export const LoginModule: React.FC = () => {
     <>
       <div className=" bg-blue-light relative w-full min-h-[100vh] lg:pt-32 md:pt-28 pt-24 lg:px-32 md:px-16 px-3">
         <h1 className="text-3xl text-center">Login</h1>
-        <br/>
+        <br />
         <DialogueCard>
           <form id="login" name="login">
             <h2>E-mail</h2>

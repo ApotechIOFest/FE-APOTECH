@@ -22,7 +22,7 @@ export const RegisterModule: React.FC = () => {
     axios
       .post('/register', data)
       .then((res) => {
-        alert("success") // TEMP
+        alert('success') // TEMP
 
         setInterval(() => {
           router.push('/auth/login')
@@ -31,7 +31,7 @@ export const RegisterModule: React.FC = () => {
       .catch((err) => {
         console.log('ERR', err)
 
-        alert("error") // TEMP
+        alert('error') // TEMP
       })
       .finally(() => setIsLoading(false))
   }
@@ -40,7 +40,7 @@ export const RegisterModule: React.FC = () => {
     <>
       <div className=" bg-blue-light relative w-full lg:pt-32 md:pt-28 pt-24 lg:px-32 md:px-16 px-3">
         <h1 className="text-3xl text-center">Welcome to Apotech!</h1>
-        <br/>
+        <br />
         <DialogueCard>
           <h2>Name</h2>
           <TextInput

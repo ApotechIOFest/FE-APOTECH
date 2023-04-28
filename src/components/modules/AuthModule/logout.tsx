@@ -1,7 +1,7 @@
-import { useEffect } from "react"
-import secureLocalStorage from "react-secure-storage"
-import { DialogueCard } from "./module-elements/DialogueCard"
-import { useRouter } from "next/router"
+import { useEffect } from 'react'
+import secureLocalStorage from 'react-secure-storage'
+import { DialogueCard } from './module-elements/DialogueCard'
+import { useRouter } from 'next/router'
 
 export const LogoutModule: React.FC = () => {
   const router = useRouter()
@@ -13,7 +13,6 @@ export const LogoutModule: React.FC = () => {
     setInterval(() => {
       router.push('/')
     }, 3000)
-
   }, [])
 
   return (
