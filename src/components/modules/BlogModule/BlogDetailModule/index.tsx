@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import Image from 'next/image'
 import { Blog } from '../interface'
-import { Breadcrumb, Button } from 'flowbite-react'
+import { Breadcrumb } from 'flowbite-react'
 
 export const BlogDetailModule: React.FC = () => {
   const [blog, setBlog] = useState<Blog | null>(null)
@@ -69,7 +69,7 @@ export const BlogDetailModule: React.FC = () => {
         />
 
         <p
-        className='lg:mx-10'
+          className="lg:mx-10"
           dangerouslySetInnerHTML={{
             __html: blog?.content.replace(/\n/g, '<br />') || '',
           }}

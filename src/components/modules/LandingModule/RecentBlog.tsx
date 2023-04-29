@@ -43,9 +43,9 @@ export default function RecentBlog() {
       </div>
       <div className="max-w-screen-xl mx-auto my-5 sm:my-10 p-5 sm:p-0">
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-5">
-        {blog?.slice(0, 3).map((blog: Blog, key: number) => (
-  <BlogCard key={key} blog={blog} />
-))}
+          {blog?.slice(0, 3).map((blog: Blog, key: number) => (
+            <BlogCard key={key} blog={blog} />
+          ))}
         </div>
       </div>
     </>
