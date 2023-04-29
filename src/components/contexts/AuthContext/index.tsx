@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import secureLocalStorage from 'react-secure-storage'
-import { User } from './interface'
+import { Jwt, User } from './interface'
 
 export const useAuthContext = () => useContext(AuthContext)
 
@@ -18,12 +18,12 @@ export const useAuth = () => {
 }
 
 export const AuthProvider: React.FC<any> = ({ children }) => {
-  const [jwt, setJwt] = useState<string | null | undefined>()
+  const [jwt, setJwt] = useState<Jwt | null | undefined>()
   const [user, setUser] = useState<User | null | undefined>()
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const token = secureLocalStorage.getItem('jwt') as string
+    const token = JSON.parse(secureLocalStorage.getItem('token') as string)
     setJwt(token)
     const sessionUser = JSON.parse(secureLocalStorage.getItem('user') as string)
     setUser(sessionUser)

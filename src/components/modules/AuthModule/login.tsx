@@ -32,11 +32,11 @@ export const LoginModule: React.FC = () => {
     axios
       .post('/login', formData)
       .then((res) => {
-        setJwt(res.data.data)
+        setUser(res.data.data)
         secureLocalStorage.setItem('user', JSON.stringify(res.data.data))
-        setUser(res.data.token)
-        secureLocalStorage.setItem('token', res.data.token)
-
+        setJwt(res.data.token)
+        secureLocalStorage.setItem('token', JSON.stringify(res.data.token))
+        console.log(res.data)
         alert('success') // TEMP
 
         setTimeout(() => {

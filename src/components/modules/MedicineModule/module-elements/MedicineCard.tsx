@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Props } from './interface'
 import Image from 'next/image'
 import { Button } from 'flowbite-react'
 import { ALink } from '@elements'
+import { IAuthContext } from 'src/components/contexts/AuthContext/interface'
+import { useAuthContext } from 'src/components/contexts/AuthContext'
 
 export const MedicineCard: React.FC<Props> = ({
   medicine,
   className,
   addToCartHandler,
 }) => {
+  const { jwt, user }: IAuthContext = useAuthContext()
   return (
     <>
       <div
@@ -36,6 +39,7 @@ export const MedicineCard: React.FC<Props> = ({
           </ALink>
           <Button
             className="bg-indigo-500"
+            disabled={!jwt}
             onClick={(e) => addToCartHandler(medicine)}
           >
             Add to Cart
