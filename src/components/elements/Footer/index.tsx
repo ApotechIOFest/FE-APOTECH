@@ -46,7 +46,7 @@ export const FooTer: React.FC = () => {
                 <Footer.LinkGroup col={true}>
                   <Footer.Link href="#">Landing</Footer.Link>
                   <Footer.Link href="#">About Us</Footer.Link>
-                  <Footer.Link href="#">Articles</Footer.Link>
+                  <Footer.Link href="#">Blogs</Footer.Link>
                 </Footer.LinkGroup>
               </div>
               <div>

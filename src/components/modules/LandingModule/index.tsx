@@ -1,7 +1,6 @@
 import React from 'react'
 import Hero from './Hero'
 import About from './About'
-import Faq from './Faq'
 import RecentBlog from './RecentBlog'
 
 export const LandingModule: React.FC = () => {
@@ -11,7 +10,6 @@ export const LandingModule: React.FC = () => {
         <Hero />
         <About />
         <RecentBlog />
-        <Faq />
       </div>
     </>
   )
