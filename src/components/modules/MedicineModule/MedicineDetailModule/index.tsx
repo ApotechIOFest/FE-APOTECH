@@ -4,21 +4,34 @@ import axios from 'axios'
 import { Medicine } from '../interface'
 import { Breadcrumb, Button } from 'flowbite-react'
 import Image from 'next/image'
+import { CartFooter } from '@elements'
+import { IAuthContext } from 'src/components/contexts/AuthContext/interface'
+import { useAuthContext } from 'src/components/contexts/AuthContext'
 
 export const MedicineDetailModule: React.FC = () => {
   const [medicine, setMedicine] = useState<Medicine | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [isZoomedIn, setIsZoomedIn] = useState<boolean>(true)
+  const [quantity, setQuantity] = useState<number>(0)
+  const { jwt, loading }: IAuthContext = useAuthContext()
 
   const router = useRouter()
   const { id } = router.query
 
-  function handleAddToCart(e: any) {
-    // TODO
-    // 1. Check if stock is enough (ingat, user bisa add to cart more than sekali)
-    // 2. Add to CartContext, nanti CartContext nya ngehit backend buat ngesave/nge update cart nya
-    // 3. show updated Cart
-    // btw you should do ALL the above in CartContext i think (reusable code)
+  function postCart(medicine: Medicine): any {
+    const config = {
+      headers: { Authorization: `Bearer ${jwt?.access}` },
+    }
+    const body = {
+      medicine: medicine.id,
+      quantity: 1,
+    }
+    return axios
+      .post('/cart/carts/', body, config)
+      .then((res) => res.data)
+      .catch((err) => {
+        throw new Error(err)
+      })
   }
 
   function fetchMedicine(medicineId: string): Promise<Medicine> {
@@ -30,7 +43,7 @@ export const MedicineDetailModule: React.FC = () => {
       })
   }
 
-  if (router.isReady && !medicine && isLoading) {
+  if (router.isReady && !medicine && !loading) {
     fetchMedicine(id as string)
       .then((data) => {
         setMedicine(data)
@@ -111,7 +124,11 @@ export const MedicineDetailModule: React.FC = () => {
             </p>
             <p>{medicine?.description}</p>
             <div className="mt-8"></div>
-            <Button className="px-4 bg-indigo-500" onClick={handleAddToCart}>
+            <Button
+              className="px-4 bg-indigo-500"
+              disabled={!jwt || medicine?.stock == 0}
+              onClick={(e) => medicine && postCart(medicine)}
+            >
               Add to Cart
               <Image
                 src="/assets/images/icons/cart.svg"
@@ -128,6 +145,7 @@ export const MedicineDetailModule: React.FC = () => {
           </div>
         </div>
       </main>
+      <CartFooter router={router.isReady} />
     </>
   )
 }

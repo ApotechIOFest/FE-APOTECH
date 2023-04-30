@@ -9,3 +9,11 @@ export interface Medicine {
   stock: number
   expiration_date: string // YYYY-MM-DD
 }
+
+export interface Cart {
+  id: number
+  quantity: number
+  totalPrice: string
+  medicine: number
+  medicineDetails?: Medicine
+}
