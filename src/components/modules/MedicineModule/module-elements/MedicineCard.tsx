@@ -9,7 +9,7 @@ import { Medicine } from '../interface'
 import axios from 'axios'
 
 export const MedicineCard: React.FC<Props> = ({ medicine, className }) => {
-  const { jwt, setLoading }: IAuthContext = useAuthContext()
+  const { jwt }: IAuthContext = useAuthContext()
 
   function postCart(medicine: Medicine): any {
     const config = {

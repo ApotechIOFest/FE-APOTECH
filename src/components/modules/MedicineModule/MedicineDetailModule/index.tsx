@@ -10,9 +10,7 @@ import { useAuthContext } from 'src/components/contexts/AuthContext'
 
 export const MedicineDetailModule: React.FC = () => {
   const [medicine, setMedicine] = useState<Medicine | null>(null)
-  const [isLoading, setIsLoading] = useState<boolean>(true)
   const [isZoomedIn, setIsZoomedIn] = useState<boolean>(true)
-  const [quantity, setQuantity] = useState<number>(0)
   const { jwt, loading }: IAuthContext = useAuthContext()
 
   const router = useRouter()
@@ -52,7 +50,6 @@ export const MedicineDetailModule: React.FC = () => {
         alert(err)
         setMedicine(null)
       })
-      .finally(() => setIsLoading(false))
   }
 
   return (

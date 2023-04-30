@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Button, Spinner, TextInput } from 'flowbite-react'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
-import { Cart, Medicine } from './interface'
+import { Medicine } from './interface'
 import { MedicineCard } from './module-elements/MedicineCard'
 import Image from 'next/image'
 import { IAuthContext } from 'src/components/contexts/AuthContext/interface'
@@ -12,7 +12,7 @@ import { CartFooter } from '@elements'
 export const MedicineModule: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string | undefined>(undefined)
   const [medicines, setMedicines] = useState<Medicine[] | null>()
-  const { loading, setLoading }: IAuthContext = useAuthContext()
+  const { loading }: IAuthContext = useAuthContext()
 
   const router = useRouter()
 

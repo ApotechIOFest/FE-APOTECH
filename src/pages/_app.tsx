@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import 'src/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { FooTer, NavBar } from '@elements'
