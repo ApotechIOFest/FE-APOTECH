@@ -9,9 +9,9 @@ export interface User {
   is_admin: boolean
 }
 
-export interface Jwt{
-  refresh : string
-  access : string
+export interface Jwt {
+  refresh: string
+  access: string
 }
 
 export interface IAuthContext {
@@ -19,4 +19,6 @@ export interface IAuthContext {
   setJwt: React.Dispatch<any>
   user: User
   setUser: React.Dispatch<any>
+  loading: boolean
+  setLoading: React.Dispatch<any>
 }

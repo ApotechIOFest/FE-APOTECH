@@ -5,15 +5,16 @@ import React, { useState } from 'react'
 import { Medicine } from './interface'
 import { MedicineCard } from './module-elements/MedicineCard'
 import Image from 'next/image'
+import { IAuthContext } from 'src/components/contexts/AuthContext/interface'
+import { useAuthContext } from 'src/components/contexts/AuthContext'
+import { CartFooter } from '@elements'
 
 export const MedicineModule: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string | undefined>(undefined)
   const [medicines, setMedicines] = useState<Medicine[] | null>()
-  const router = useRouter()
+  const { loading }: IAuthContext = useAuthContext()
 
-  function dummyFunction() {
-    // TODO (replace dummyFunction called by MedicineCard with an actual add-to-cart handler)
-  }
+  const router = useRouter()
 
   function fetchMedicines(): Promise<any> {
     return axios
@@ -24,7 +25,7 @@ export const MedicineModule: React.FC = () => {
       })
   }
 
-  if (router.isReady && !medicines) {
+  if (router.isReady && !medicines && !loading) {
     fetchMedicines()
       .then((data) => setMedicines(data))
       .catch((err) => setMedicines([]))
@@ -32,8 +33,10 @@ export const MedicineModule: React.FC = () => {
 
   return (
     <>
-      <main className="relative w-full min-h-screen 2xl:px-[20vw] lg:py-32 md:py-28 py-24 lg:px-32 md:px-16 px-3 text-sm bg-slate-50">
-        <h1 className="py-12 text-display-small text-center">Katalog Obat</h1>
+      <main className="relative w-full min-h-screen 2xl:px-[20vw] lg:py-20 md:py-20 py-24 lg:px-32 md:px-16 px-3 text-sm bg-slate-50">
+        <h1 className="py-12 text-display-medium text-blue-darkest text-center">
+          Katalog Obat
+        </h1>
         <div className="flex py-6 w-full justify-around gap-x-2">
           <TextInput
             id="searchQuery"
@@ -55,17 +58,14 @@ export const MedicineModule: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-1 gap-y-8">
           {medicines ? (
             medicines?.map((medicine: Medicine, key: number) => (
-              <MedicineCard
-                key={key}
-                medicine={medicine}
-                addToCartHandler={dummyFunction}
-              />
+              <MedicineCard key={key} medicine={medicine} />
             ))
           ) : (
             <Spinner />
           )}
         </div>
       </main>
+      <CartFooter router={router.isReady} />
     </>
   )
 }
