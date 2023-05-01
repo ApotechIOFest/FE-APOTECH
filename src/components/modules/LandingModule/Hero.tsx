@@ -1,3 +1,4 @@
+import { Button } from 'flowbite-react'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
@@ -68,18 +69,32 @@ export default function Hero() {
       <div className="relative flex flex-col md:flex-row justify-center items-center mb-10 min-h-[38vw] w-full">
         {/* left */}
         <div
-          className="flex flex-row relative mb-10 font-bold leading-none
-        text-center md:text-left lg:text-display-medium text-display-small
+          className="flex flex-col relative mb-10 leading-none
+        text-center md:text-left 2xl:pl-[15vw]
         md:w-[50%] md:max-w-[55%] w-[100%] h-[80vw] md:h-fit mx-auto md:mx-0 md:mr-auto md:px-0 px-[10vw] sm:px-[8vw]"
         >
-          <h1 className="text-black mr-3 2xl:pl-[15vw] md:my-0 my-auto">
+          <h1 className="text-black lg:text-display-medium text-display-small font-bold mr-3 md:my-0 my-auto">
             Apotech is more than just a{' '}
             <p className="inline text-blue-darkest font-productSansBold font-black underlinable w-fit">
               {currentKeyword}
             </p>
             <p className="inline">.</p>
           </h1>
+          <br/>
+          <p className=' text-title-medium'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the p.</p>
+          <br/>
+          <Button className=' bg-blue-dark w-[50%] hover:bg-blue-darkest md:mr-auto md:mx-0 mx-auto'>
+              Yuk eksplor!
+          </Button>
         </div>
+
+        <Image 
+          width={200}
+          height={150}
+          alt="call to action"
+          src="/assets/images/action-bubble.png"
+          className='absolute right-[15vw] bottom-[10vw] z-20 md:w-fit md:h-fit w-0 h-0'
+        />
 
         {/* <div className="bg-red-300 ml-auto relative"> */}
         <Image
@@ -87,7 +102,7 @@ export default function Hero() {
           width={320}
           className="
             absolute right-0 top-0 lg:-mr-32 md:-mr-16 -mr-3 lg:-mt-20 md:-mt-16 -mt-12
-            ml-auto md:w-[40vw] md:h-[40vw] w-0 h-0
+            ml-auto md:w-[40vw] md:h-[40vw] w-0 h-0 z-10
             "
           src="/assets/images/hero-image.png"
           alt=""
