@@ -9,7 +9,7 @@ import {
 } from '@heroicons/react/24/outline'
 
 export const ForumModule: React.FC = () => {
-  const [forums, setForums] = useState<ForumDiscuss[]>()
+  const [forums, setForums] = useState<ForumDiscuss[]>([])
   const [content, setContent] = useState<string | undefined>()
   const { jwt, user, loading }: IAuthContext = useAuthContext()
   const [showSection, setShowSection] = useState(false)
@@ -33,7 +33,7 @@ export const ForumModule: React.FC = () => {
 
     await axios
       .post(
-        'http://localhost:8000/forum/forums/',
+        '/forum/forums/',
         {
           title: title,
           content: forumContent,
@@ -53,7 +53,7 @@ export const ForumModule: React.FC = () => {
 
     await axios
       .post(
-        `http://localhost:8000/forum/replies/${id}/create/`,
+        `/forum/replies/${id}/create/`,
         {
           author: !loading && user ? user.id : null,
           //   author: 1,
@@ -82,7 +82,7 @@ export const ForumModule: React.FC = () => {
 
   const handleLikeFeatureFunction = async (id: any) => {
     await axios
-      .post(`http://localhost:8000/forum/forums/${id}/like/`, null, config)
+      .post(`/forum/forums/${id}/like/`, null, config)
       .then((response) => {
         const updatedForums = forums?.map((forum) => {
           if (forum.id === id) {
@@ -98,7 +98,7 @@ export const ForumModule: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8000/forum/forums/', config)
+      .get('/forum/forums/', config)
       .then((response) => {
         console.log(response.data)
         setForums(response.data)
