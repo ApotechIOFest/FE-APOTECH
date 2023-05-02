@@ -10,7 +10,7 @@ export const LogoutModule: React.FC = () => {
 
   useEffect(() => {
     secureLocalStorage.removeItem('user')
-    secureLocalStorage.removeItem('jwt')
+    secureLocalStorage.removeItem('token')
     setUser(null)
     setJwt(null)
 

@@ -3,12 +3,35 @@ import { Props } from './interface'
 import Image from 'next/image'
 import { Button } from 'flowbite-react'
 import { ALink } from '@elements'
+import { IAuthContext } from 'src/components/contexts/AuthContext/interface'
+import { useAuthContext } from 'src/components/contexts/AuthContext'
+import { Medicine } from '../interface'
+import axios from 'axios'
 
-export const MedicineCard: React.FC<Props> = ({
-  medicine,
-  className,
-  addToCartHandler,
-}) => {
+export const MedicineCard: React.FC<Props> = ({ medicine, className, handler }) => {
+  const { jwt }: IAuthContext = useAuthContext()
+
+  function postCart(medicine: Medicine): any {
+    const config = {
+      headers: { Authorization: `Bearer ${jwt?.access}` },
+    }
+    const body = {
+      medicine: medicine.id,
+      quantity: 1,
+    }
+
+    if (!jwt) {
+      handler("Login first!")
+    }
+
+    return axios
+      .post('/cart/carts/', body, config)
+      .then((res) => res.data)
+      .catch((err) => {
+        throw new Error(err)
+      })
+  }
+
   return (
     <>
       <div
@@ -36,9 +59,10 @@ export const MedicineCard: React.FC<Props> = ({
           </ALink>
           <Button
             className="bg-indigo-500"
-            onClick={(e) => addToCartHandler(medicine)}
+            disabled={!jwt || medicine.stock == 0}
+            onClick={(e) => postCart(medicine)}
           >
-            Add to Cart
+            { jwt ? "Add to Cart" : "Login dulu!" }
           </Button>
         </div>
       </div>
