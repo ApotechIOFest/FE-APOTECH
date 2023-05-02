@@ -4,13 +4,16 @@ import { useAuthContext } from 'src/components/contexts/AuthContext'
 import { IAuthContext } from 'src/components/contexts/AuthContext/interface'
 import { Cart, Medicine } from 'src/components/modules/MedicineModule/interface'
 import Image from 'next/image'
-import { Breadcrumb, Button } from 'flowbite-react'
+import { Breadcrumb, Button, TextInput } from 'flowbite-react'
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
+import { useRouter } from 'next/router'
+import { ICheckoutResponse } from './interface'
 
 export const CartModule: React.FC = () => {
   const [carts, setCarts] = useState<Cart[] | null>()
   const [refreshCart, setRefreshCart] = useState<boolean>(false)
-  const { jwt }: IAuthContext = useAuthContext()
+  const { jwt, user }: IAuthContext = useAuthContext()
+  const router = useRouter()
 
   useEffect(() => {
     async function fetchCart(): Promise<Cart[]> {
@@ -72,6 +75,22 @@ export const CartModule: React.FC = () => {
   function decrementCart(medicine: Medicine): any {
     return updateCartQuantity(medicine, -1)
   }
+
+  function triggerCheckout() {
+    const config = {
+      headers: { Authorization: `Bearer ${jwt?.access}` },
+    }
+    const body = {}
+    axios
+      .post('/payment/checkout/', body, config)
+      .then((res) => res.data)
+      .then((data: ICheckoutResponse) => {
+        router.push(`/checkout/pending/${data.order_id}`)
+        window.open(data.payment_url, "_blank")
+      })
+      .catch((err) => console.log(err))
+  }
+
   return (
     <>
       <main className="relative w-full min-h-screen 2xl:px-[20vw] lg:py-32 md:py-28 py-24 lg:px-32 md:px-16 px-3 text-sm bg-slate-50">
@@ -183,11 +202,31 @@ export const CartModule: React.FC = () => {
                     .00
                   </div>
                 </div>
+                <div className='flex w-full justify-between'>
+                  <div>
+                    Biaya Pengiriman
+                  </div>
+                  <div>
+                    Rp. 0.00
+                  </div>
+                </div>
               </div>
             ) : (
               <div>Your cart is empty</div>
             )}
-            <Button className="w-full flex">Konfirmasi Pembayaran</Button>
+
+            <div>
+              <h1>Alamat Pengiriman</h1>
+              <p>{user?.address}</p>
+            </div>
+
+            <div>
+              <TextInput height={60} placeholder='Masukan catatan...' className='w-full'/>
+            </div>
+
+            <Button className="w-full flex" onClick={(e) => triggerCheckout()}>
+              Lanjut Pembayaran
+            </Button>
           </div>
         </div>
       </main>
