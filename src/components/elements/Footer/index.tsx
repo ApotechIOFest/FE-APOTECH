@@ -11,7 +11,7 @@ export const FooTer: React.FC = () => {
         <div className="w-full">
           <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
             <div className="flex flex-col justify-center">
-              <div className="flex">
+              <div className="flex mx-auto w-fit">
                 <ApotechLogo size={'w-10'} />
                 <h1 className="self-center whitespace-nowrap ml-3 text-blue-darkest lg:text-headline-medium md:text-headline-medium text-title-large">
                   apotech
@@ -22,7 +22,7 @@ export const FooTer: React.FC = () => {
               </p>
               <Link
                 href="https://github.com/ApotechIOFest/"
-                className="mt-6 mx-auto"
+                className="my-6 mx-auto"
               >
                 <Image
                   src="/assets/images/icons/github-lightblue.svg"
@@ -36,8 +36,8 @@ export const FooTer: React.FC = () => {
               <div>
                 <Footer.Title title="PROFILE" />
                 <Footer.LinkGroup col={true}>
-                  <Footer.Link href="/home">Home</Footer.Link>
-                  <Footer.Link href="#about">About Us</Footer.Link>
+                  <Footer.Link href="/">Home</Footer.Link>
+                  <Footer.Link href="/">About Us</Footer.Link>
                 </Footer.LinkGroup>
               </div>
               <div>
