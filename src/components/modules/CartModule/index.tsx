@@ -12,7 +12,7 @@ import { ICheckoutResponse } from './interface'
 export const CartModule: React.FC = () => {
   const [carts, setCarts] = useState<Cart[] | null>()
   const [refreshCart, setRefreshCart] = useState<boolean>(false)
-  const { jwt, user }: IAuthContext = useAuthContext()
+  const { jwt, user, loading }: IAuthContext = useAuthContext()
   const router = useRouter()
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export const CartModule: React.FC = () => {
       })
     }
 
-    if (jwt) {
+    if (jwt && !loading) {
       fetchCart()
         .then((data) => setCarts(data))
         .catch((err) => setCarts([]))
@@ -49,10 +49,11 @@ export const CartModule: React.FC = () => {
     setRefreshCart(false)
   }, [jwt, refreshCart])
 
+  const config = {
+    headers: { Authorization: `Bearer ${jwt?.access}` },
+  }
+  
   function updateCartQuantity(medicine: Medicine, quantity: number): any {
-    const config = {
-      headers: { Authorization: `Bearer ${jwt?.access}` },
-    }
     const body = {
       medicine: medicine.id,
       quantity,
@@ -74,6 +75,20 @@ export const CartModule: React.FC = () => {
 
   function decrementCart(medicine: Medicine): any {
     return updateCartQuantity(medicine, -1)
+  }
+
+  function nonZeroCart(cart: Cart): boolean {
+    if (cart.quantity > 0) {
+      return true
+    } else {
+      axios
+        .delete(`/cart/carts/${cart.id}/`, config)
+        .then(res => {
+        })
+        .catch(err => {
+        })
+      return false;
+    }
   }
 
   function triggerCheckout() {
@@ -111,7 +126,7 @@ export const CartModule: React.FC = () => {
               <tbody>
                 {carts?.map(
                   (cart) =>
-                    cart.quantity > 0 && (
+                    nonZeroCart(cart) && (
                       <tr
                         key={cart.id}
                         className="border-b border-gray-700 py-2"
