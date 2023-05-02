@@ -8,7 +8,7 @@ import { useAuthContext } from 'src/components/contexts/AuthContext'
 import { Medicine } from '../interface'
 import axios from 'axios'
 
-export const MedicineCard: React.FC<Props> = ({ medicine, className }) => {
+export const MedicineCard: React.FC<Props> = ({ medicine, className, handler }) => {
   const { jwt }: IAuthContext = useAuthContext()
 
   function postCart(medicine: Medicine): any {
@@ -19,6 +19,11 @@ export const MedicineCard: React.FC<Props> = ({ medicine, className }) => {
       medicine: medicine.id,
       quantity: 1,
     }
+
+    if (!jwt) {
+      handler("Login first!")
+    }
+
     return axios
       .post('/cart/carts/', body, config)
       .then((res) => res.data)
@@ -57,7 +62,7 @@ export const MedicineCard: React.FC<Props> = ({ medicine, className }) => {
             disabled={!jwt || medicine.stock == 0}
             onClick={(e) => postCart(medicine)}
           >
-            Add to Cart
+            { jwt ? "Add to Cart" : "Login dulu!" }
           </Button>
         </div>
       </div>

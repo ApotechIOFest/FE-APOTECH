@@ -8,7 +8,8 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import { useAuthContext } from 'src/components/contexts/AuthContext'
 import secureLocalStorage from 'react-secure-storage'
-// import toast from 'react-hot-toast'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 export const LoginModule: React.FC = () => {
   const [data, setData] = useState<ILoginData>(EMPTY_LOGIN_DATA)
@@ -26,9 +27,7 @@ export const LoginModule: React.FC = () => {
     const formData = new FormData()
     formData.set('email', data.email)
     formData.set('password', data.password)
-    console.log(data, formData.entries())
 
-    // const promise =
     axios
       .post('/login', formData)
       .then((res) => {
@@ -36,30 +35,23 @@ export const LoginModule: React.FC = () => {
         secureLocalStorage.setItem('user', JSON.stringify(res.data.data))
         setJwt(res.data.token)
         secureLocalStorage.setItem('token', JSON.stringify(res.data.token))
-        console.log(res.data)
-        alert('success') // TEMP
+
+        toast.success("Successfully logged in. Redirecting...")
 
         setTimeout(() => {
           router.push('/')
         }, 2000)
       })
       .catch((err) => {
-        console.log('ERROR:', err)
-
-        alert('err') // TEMP
+        toast.error("Error logging in.")
       })
       .finally(() => setIsLoading(false))
-
-    // toast.promise(promise, {
-    //   error: "error",
-    //   loading: "loading...",
-    //   success: "success!"
-    // })
   }
 
   return (
     <>
       <div className=" bg-blue-light relative w-full min-h-[80vh] lg:min-h-[76vh] lg:pt-32 md:pt-28 pt-24 lg:px-32 md:px-16 px-3">
+        <ToastContainer />
         <h1 className="text-3xl text-center">Login</h1>
         <br />
         <DialogueCard>
@@ -98,6 +90,7 @@ export const LoginModule: React.FC = () => {
             </div>
           </form>
         </DialogueCard>
+        <br/><br/>
       </div>
     </>
   )

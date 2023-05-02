@@ -14,27 +14,29 @@ export const NavBar: React.FC = () => {
     <>
       <Navbar
         rounded={true}
-        className="bg-white-broken fixed flex w-full justify-between px-5 py-3 z-50 shadow-md"
+        className="bg-white-broken fixed flex w-full justify-between px-[0.15rem] sm:px-5 py-3 z-50 shadow-md"
       >
-        <Navbar.Brand>
-          <ApotechLogo size={'w-10'} />
+        <Navbar.Brand href='/'>
+          <ApotechLogo size={'w-8'} className='lg:w-10' />
           <h1 className="self-center whitespace-nowrap ml-3 text-blue-darkest lg:text-headline-medium md:text-headline-medium text-title-large">
             apotech
           </h1>
         </Navbar.Brand>
-        <div className="flex md:order-2 space-x-3">
+        <div className="flex md:order-2 sm:space-x-3">
           {user ? (
             <>
               <Avatar
                 img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
                 rounded={true}
                 bordered={false}
+                className='w-0 h-0 sm:w-fit sm:h-fit'
               />
               <Dropdown
-                className="text-sm font-bold"
+                className="text-xs sm:text-sm font-bold"
                 label={<div>{user.name}</div>}
                 outline
                 color={'light'}
+                // size={"small"}
               >
                 <Dropdown.Item>
                   <Link href="/profile">Profile</Link>
@@ -59,7 +61,7 @@ export const NavBar: React.FC = () => {
           )}
           <Navbar.Toggle />
         </div>
-        <Navbar.Collapse>
+        <Navbar.Collapse >
           {routes.map((route, index) => (
             <Navbar.Link key={index} href={route.path}>
               <button
@@ -72,7 +74,7 @@ export const NavBar: React.FC = () => {
                     <route.icon
                       fill="none"
                       stroke="primary"
-                      className="h-5 w-5 mr-2"
+                      className="h-5 w-5 mr-1"
                     />
                   )}
                 </span>
