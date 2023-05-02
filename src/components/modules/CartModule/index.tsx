@@ -52,7 +52,7 @@ export const CartModule: React.FC = () => {
   const config = {
     headers: { Authorization: `Bearer ${jwt?.access}` },
   }
-  
+
   function updateCartQuantity(medicine: Medicine, quantity: number): any {
     const body = {
       medicine: medicine.id,
@@ -83,11 +83,9 @@ export const CartModule: React.FC = () => {
     } else {
       axios
         .delete(`/cart/carts/${cart.id}/`, config)
-        .then(res => {
-        })
-        .catch(err => {
-        })
-      return false;
+        .then((res) => {})
+        .catch((err) => {})
+      return false
     }
   }
 
@@ -101,7 +99,7 @@ export const CartModule: React.FC = () => {
       .then((res) => res.data)
       .then((data: ICheckoutResponse) => {
         router.push(`/checkout/pending/${data.order_id}`)
-        window.open(data.payment_url, "_blank")
+        window.open(data.payment_url, '_blank')
       })
       .catch((err) => console.log(err))
   }
@@ -217,13 +215,9 @@ export const CartModule: React.FC = () => {
                     .00
                   </div>
                 </div>
-                <div className='flex w-full justify-between'>
-                  <div>
-                    Biaya Pengiriman
-                  </div>
-                  <div>
-                    Rp. 0.00
-                  </div>
+                <div className="flex w-full justify-between">
+                  <div>Biaya Pengiriman</div>
+                  <div>Rp. 0.00</div>
                 </div>
               </div>
             ) : (
@@ -236,7 +230,11 @@ export const CartModule: React.FC = () => {
             </div>
 
             <div>
-              <TextInput height={60} placeholder='Masukan catatan...' className='w-full'/>
+              <TextInput
+                height={60}
+                placeholder="Masukan catatan..."
+                className="w-full"
+              />
             </div>
 
             <Button className="w-full flex" onClick={(e) => triggerCheckout()}>
