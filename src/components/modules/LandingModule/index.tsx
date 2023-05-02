@@ -13,7 +13,7 @@ export const LandingModule: React.FC = () => {
         <Hero />
         <About />
         <Service />
-        <RecentMedicine/>
+        <RecentMedicine />
         <RecentBlog />
       </div>
     </>

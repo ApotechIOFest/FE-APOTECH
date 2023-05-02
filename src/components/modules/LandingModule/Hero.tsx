@@ -92,7 +92,10 @@ export default function Hero() {
           </p>
           <br />
           <br />
-          <Button className=" bg-blue-dark w-[50%] hover:bg-blue-darkest md:mr-auto md:mx-0 mx-auto" href='#about'>
+          <Button
+            className=" bg-blue-dark w-[50%] hover:bg-blue-darkest md:mr-auto md:mx-0 mx-auto"
+            href="#about"
+          >
             Yuk eksplor!
           </Button>
         </div>

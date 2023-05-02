@@ -3,7 +3,10 @@ import Image from 'next/image'
 export default function About() {
   return (
     <>
-      <div className="relative flex flex-col md:flex-row gap-10 justify-center items-center mb-10 min-h-[45vw]" id='about'>
+      <div
+        className="relative flex flex-col md:flex-row gap-10 justify-center items-center mb-10 min-h-[45vw]"
+        id="about"
+      >
         <Image
           height={320}
           width={320}

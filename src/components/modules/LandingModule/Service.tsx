@@ -45,7 +45,7 @@ export default function Service() {
             <div className="py-10 my-4 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
               <div className="text-center space-y-2 sm:text-left">
                 <div className="space-y-3 p-5">
-                <MedicalStaff size={"w-[70px]"} />
+                  <MedicalStaff size={'w-[70px]'} />
                   <p className="text-lg text-black font-semibold">
                     Experienced and Knowledgeable Healthcare Professionals
                   </p>
@@ -57,7 +57,7 @@ export default function Service() {
             <div className="py-10 my-4 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
               <div className="text-center space-y-2 sm:text-left">
                 <div className="space-y-3 p-5">
-                <MedicineHand size={"w-[70px]"}/>
+                  <MedicineHand size={'w-[70px]'} />
                   <p className="text-lg text-black font-semibold">
                     High-Quality Medicines
                   </p>
@@ -71,7 +71,7 @@ export default function Service() {
         <div className="py-10 md:my-4 my-0 lg:my-40 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
           <div className="text-center space-y- sm:text-left">
             <div className="space-y-3 p-5">
-            <MedicineForum size={"w-[70px]"}/>
+              <MedicineForum size={'w-[70px]'} />
               <p className="text-lg text-black font-semibold">
                 Accessible Healthcare Discussion with Forum
               </p>

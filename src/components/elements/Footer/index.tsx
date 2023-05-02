@@ -33,7 +33,7 @@ export const FooTer: React.FC = () => {
               </Link>
             </div>
             <div className="grid grid-cols-2 gap-16 sm:mt-4 sm:grid-cols-3 sm:gap-6">
-            <div>
+              <div>
                 <Footer.Title title="PROFILE" />
                 <Footer.LinkGroup col={true}>
                   <Footer.Link href="/home">Home</Footer.Link>
