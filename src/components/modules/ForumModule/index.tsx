@@ -9,7 +9,7 @@ import {
 } from '@heroicons/react/24/outline'
 
 export const ForumModule: React.FC = () => {
-  const [forums, setForums] = useState<ForumDiscuss[] | null | undefined>()
+  const [forums, setForums] = useState<ForumDiscuss[]>()
   const [content, setContent] = useState<string | undefined>()
   const { jwt, user, loading }: IAuthContext = useAuthContext()
   const [showSection, setShowSection] = useState(false)
