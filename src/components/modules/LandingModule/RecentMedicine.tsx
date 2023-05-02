@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { ALink } from '@elements'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { Medicine } from '../MedicineModule/interface'
 import { MedicineCard } from '../MedicineModule/module-elements/MedicineCard'
+import { ALink } from '@elements'
 
 export default function RecentMedicine() {
   const [medicines, setMedicines] = useState<Medicine[] | null>()
