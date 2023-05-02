@@ -99,7 +99,7 @@ export const ForumModule: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get('/forum/forums/', config)
+      .get('/forum/forums/')
       .then((response) => {
         console.log(response.data)
         setForums(response.data)
@@ -149,7 +149,7 @@ export const ForumModule: React.FC = () => {
             </div>
           </div>
 
-          <Button type="submit" className="mt-6 w-full">
+          <Button type="submit" className="mt-6 w-full" disabled={!jwt}>
             Save
           </Button>
         </form>
