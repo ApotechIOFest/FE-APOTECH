@@ -49,7 +49,7 @@ export const CartFooter: React.FC<CartFooterProps> = ({ router }) => {
       {quantity === 0 || !jwt ? (
         <div></div>
       ) : (
-        <div className="flex justify-between bg-blue-dark lg:h-14 md:h-14 h-18 w-full fixed bottom-0 z-50 p-2 lg:px-8 md:px-8 px-1">
+        <div className="flex justify-between bg-blue-light lg:h-14 md:h-14 h-18 w-full fixed bottom-0 z-50 p-2 lg:px-8 md:px-8 px-1">
           <div className="flex flex-row lg:space-x-3 md:space-x-2 space-x-1 items-center justify-center">
             <div className="font-productSansBold">
               {quantity} {quantity === 1 ? 'item' : 'items'}

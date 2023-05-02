@@ -4,8 +4,8 @@ import { faqs } from './FaqConstant'
 export const FaqModule: React.FC = () => {
   return (
     <>
-      <div className="relative w-full min-h-[80vh] lg:min-h-[76vh] lg:pt-32 md:pt-28 pt-24 lg:px-32 md:px-16 px-3">
-        <h1 className="flex w-full justify-center lg:text-display-medium md:text-display-small text-display-small pb-3 text-blue-darkest leading-none">
+      <div className="relative w-full min-h-screen 2xl:px-[20vw] lg:py-20 md:py-20 py-24 lg:px-32 md:px-16 ">
+        <h1 className="flex w-full justify-center lg:text-display-medium md:text-display-small text-display-small pb-3 text-blue-darkest leading-none mt-12 mb-5">
           Frequently Asked Questions
         </h1>
         <Accordion alwaysOpen={true}>

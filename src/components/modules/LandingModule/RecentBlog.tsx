@@ -33,6 +33,7 @@ export default function RecentBlog() {
 
   return (
     <>
+              <div className='relative mb-10 min-h-[40vw]'>
       <div className="flex flex-wrap items-center justify-between mb-8">
         <h1 className="lg:text-display-medium md:text-display-small text-display-small font-bold leading-none text-blue-darkest">
           Our Recent Blogs
@@ -47,6 +48,7 @@ export default function RecentBlog() {
             <BlogCard key={key} blog={blog} />
           ))}
         </div>
+      </div>
       </div>
     </>
   )
