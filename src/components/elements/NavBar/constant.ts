@@ -18,7 +18,7 @@ export const routes = [
     icon: BeakerIcon,
   },
   {
-    path: '/',
+    path: '/forum',
     name: 'Forum',
     icon: ChatBubbleLeftRightIcon,
   },
