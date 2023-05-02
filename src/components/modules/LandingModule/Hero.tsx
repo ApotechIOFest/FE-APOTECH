@@ -80,20 +80,23 @@ export default function Hero() {
             </p>
             <p className="inline">.</p>
           </h1>
-          <br/>
-          <p className=' text-title-medium'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the p.</p>
-          <br/>
-          <Button className=' bg-blue-dark w-[50%] hover:bg-blue-darkest md:mr-auto md:mx-0 mx-auto'>
-              Yuk eksplor!
+          <br />
+          <p className=" text-title-medium">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the p.
+          </p>
+          <br />
+          <Button className=" bg-blue-dark w-[50%] hover:bg-blue-darkest md:mr-auto md:mx-0 mx-auto">
+            Yuk eksplor!
           </Button>
         </div>
 
-        <Image 
+        <Image
           width={200}
           height={150}
           alt="call to action"
           src="/assets/images/action-bubble.png"
-          className='absolute right-[15vw] bottom-[10vw] z-20 md:w-fit md:h-fit w-0 h-0'
+          className="absolute right-[15vw] bottom-[10vw] z-20 md:w-fit md:h-fit w-0 h-0"
         />
 
         {/* <div className="bg-red-300 ml-auto relative"> */}
