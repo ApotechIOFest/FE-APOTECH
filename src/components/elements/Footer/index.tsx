@@ -34,19 +34,18 @@ export const FooTer: React.FC = () => {
             </div>
             <div className="grid grid-cols-2 gap-16 sm:mt-4 sm:grid-cols-3 sm:gap-6">
               <div>
-                <Footer.Title title="links" />
+                <Footer.Title title="PROFILE" />
                 <Footer.LinkGroup col={true}>
-                  <Footer.Link href="#">Medicine</Footer.Link>
-                  <Footer.Link href="#">Forum</Footer.Link>
-                  <Footer.Link href="#">Login</Footer.Link>
+                  <Footer.Link href="/home">Home</Footer.Link>
+                  <Footer.Link href="#about">About Us</Footer.Link>
                 </Footer.LinkGroup>
               </div>
               <div>
-                <Footer.Title title="links" />
+                <Footer.Title title="MENU" />
                 <Footer.LinkGroup col={true}>
-                  <Footer.Link href="#">Landing</Footer.Link>
-                  <Footer.Link href="#">About Us</Footer.Link>
-                  <Footer.Link href="#">Blogs</Footer.Link>
+                  <Footer.Link href="/medicine">Medicine</Footer.Link>
+                  <Footer.Link href="/forum">Forum</Footer.Link>
+                  <Footer.Link href="/blog">Blogs</Footer.Link>
                 </Footer.LinkGroup>
               </div>
               <div>

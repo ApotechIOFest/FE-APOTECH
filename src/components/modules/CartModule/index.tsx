@@ -12,7 +12,7 @@ import { ICheckoutResponse } from './interface'
 export const CartModule: React.FC = () => {
   const [carts, setCarts] = useState<Cart[] | null>()
   const [refreshCart, setRefreshCart] = useState<boolean>(false)
-  const { jwt, user }: IAuthContext = useAuthContext()
+  const { jwt, user, loading }: IAuthContext = useAuthContext()
   const router = useRouter()
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export const CartModule: React.FC = () => {
       })
     }
 
-    if (jwt) {
+    if (jwt && !loading) {
       fetchCart()
         .then((data) => setCarts(data))
         .catch((err) => setCarts([]))
@@ -49,10 +49,11 @@ export const CartModule: React.FC = () => {
     setRefreshCart(false)
   }, [jwt, refreshCart])
 
+  const config = {
+    headers: { Authorization: `Bearer ${jwt?.access}` },
+  }
+
   function updateCartQuantity(medicine: Medicine, quantity: number): any {
-    const config = {
-      headers: { Authorization: `Bearer ${jwt?.access}` },
-    }
     const body = {
       medicine: medicine.id,
       quantity,
@@ -74,6 +75,18 @@ export const CartModule: React.FC = () => {
 
   function decrementCart(medicine: Medicine): any {
     return updateCartQuantity(medicine, -1)
+  }
+
+  function nonZeroCart(cart: Cart): boolean {
+    if (cart.quantity > 0) {
+      return true
+    } else {
+      axios
+        .delete(`/cart/carts/${cart.id}/`, config)
+        .then((res) => {})
+        .catch((err) => {})
+      return false
+    }
   }
 
   function triggerCheckout() {
@@ -109,64 +122,70 @@ export const CartModule: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {carts?.map((cart) => (
-                  <tr key={cart.id} className="border-b border-gray-700 py-2">
-                    <td className="py-7">
-                      <div className="flex flex-row items-center space-x-4">
-                        <Image
-                          src={cart.medicineDetails?.foto_obat ?? ''}
-                          alt="foto obat"
-                          width={50}
-                          height={50}
-                          className="object-cover w-[50px] h-[50px] rounded-full"
-                        ></Image>
-                        <div>
-                          <h1 className="font-medium">
-                            {cart.medicineDetails?.nama_obat}
-                          </h1>
-                          <p className="text-sm text-gray-500">
-                            Per {cart.medicineDetails?.dosage_unit}
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="flex flex-row space-x-3 items-center">
-                        <div
-                          className="p-1 bg-blue-normal hover:bg-blue-dark hover:duration-300 hover:ease-in-out cursor-pointer"
-                          onClick={() =>
-                            cart.medicineDetails &&
-                            cart.quantity > 0 &&
-                            decrementCart(cart.medicineDetails)
-                          }
-                        >
-                          <MinusIcon
-                            width={15}
-                            className="[&>path]:stroke-[2]"
-                          />
-                        </div>
-                        <div>{cart.quantity}</div>
+                {carts?.map(
+                  (cart) =>
+                    nonZeroCart(cart) && (
+                      <tr
+                        key={cart.id}
+                        className="border-b border-gray-700 py-2"
+                      >
+                        <td className="py-7">
+                          <div className="flex flex-row items-center space-x-4">
+                            <Image
+                              src={cart.medicineDetails?.foto_obat ?? ''}
+                              alt="foto obat"
+                              width={50}
+                              height={50}
+                              className="object-cover w-[50px] h-[50px] rounded-full"
+                            ></Image>
+                            <div>
+                              <h1 className="font-medium">
+                                {cart.medicineDetails?.nama_obat}
+                              </h1>
+                              <p className="text-sm text-gray-500">
+                                Per {cart.medicineDetails?.dosage_unit}
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="flex flex-row space-x-3 items-center">
+                            <div
+                              className="p-1 bg-blue-normal hover:bg-blue-dark hover:duration-300 hover:ease-in-out cursor-pointer"
+                              onClick={() =>
+                                cart.medicineDetails &&
+                                cart.quantity > 0 &&
+                                decrementCart(cart.medicineDetails)
+                              }
+                            >
+                              <MinusIcon
+                                width={15}
+                                className="[&>path]:stroke-[2]"
+                              />
+                            </div>
+                            <div>{cart.quantity}</div>
 
-                        <div
-                          className="p-1 bg-blue-normal hover:bg-blue-dark hover:duration-300 hover:ease-in-out cursor-pointer"
-                          onClick={() =>
-                            cart.medicineDetails &&
-                            !(cart.medicineDetails?.stock == 0) &&
-                            incrementCart(cart.medicineDetails)
-                          }
-                        >
-                          <PlusIcon
-                            width={15}
-                            className="[&>path]:stroke-[2]"
-                          />
-                        </div>
-                      </div>
-                    </td>
-                    <td className="lg:block md:block hidden py-10">
-                      Rp.{cart.totalPrice}
-                    </td>
-                  </tr>
-                ))}
+                            <div
+                              className="p-1 bg-blue-normal hover:bg-blue-dark hover:duration-300 hover:ease-in-out cursor-pointer"
+                              onClick={() =>
+                                cart.medicineDetails &&
+                                !(cart.medicineDetails?.stock == 0) &&
+                                incrementCart(cart.medicineDetails)
+                              }
+                            >
+                              <PlusIcon
+                                width={15}
+                                className="[&>path]:stroke-[2]"
+                              />
+                            </div>
+                          </div>
+                        </td>
+                        <td className="lg:block md:block hidden py-10">
+                          Rp.{cart.totalPrice}
+                        </td>
+                      </tr>
+                    )
+                )}
               </tbody>
             </table>
           </div>

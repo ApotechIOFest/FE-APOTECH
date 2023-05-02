@@ -66,7 +66,7 @@ export default function Hero() {
 
   return (
     <>
-      <div className="relative flex flex-col md:flex-row justify-center items-center mb-10 min-h-[38vw] w-full">
+      <div className="relative flex flex-col md:flex-row justify-center items-center mb-10 min-h-[40vw] w-full">
         {/* left */}
         <div
           className="flex flex-col relative mb-10 leading-none
@@ -81,12 +81,21 @@ export default function Hero() {
             <p className="inline">.</p>
           </h1>
           <br />
-          <p className=" text-title-medium">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the p.
+          <p className=" text-title-medium leading-normal">
+            Welcome to Our Clinic – Where Your Health is Our Priority
+            <br />
+            <br />
+            At Apotech, we are dedicated to providing the best possible care to
+            our patients. Our clinic is staffed with highly trained and
+            experienced healthcare professionals who are committed to helping
+            you achieve optimal health and well-being.
           </p>
           <br />
-          <Button className=" bg-blue-dark w-[50%] hover:bg-blue-darkest md:mr-auto md:mx-0 mx-auto">
+          <br />
+          <Button
+            className=" bg-blue-dark w-[50%] hover:bg-blue-darkest md:mr-auto md:mx-0 mx-auto"
+            href="#about"
+          >
             Yuk eksplor!
           </Button>
         </div>
